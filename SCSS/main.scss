@@ -1,0 +1,37 @@
+@import './resets';
+@import './variables';
+
+@mixin flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin mobile {
+    @media (max-width: $mobile) {
+        @content;
+    }
+}
+
+body {
+    background: $primary-color;
+    color: $text-color;
+}
+
+.main {
+    @include flexCenter(row);
+    width: 80%;
+    margin: 0 auto;
+    #{&}_paragraph {
+        font-weight: bold;
+
+        &:hover {
+            color: pink;
+        }
+    }
+
+    @include mobile {
+        flex-direction: column;
+    }
+}
